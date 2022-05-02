@@ -53,8 +53,13 @@ class Controller:
             fights = pygame.sprite.spritecollide(self.hero, self.enemies, True)
             if(fights):
                 for e in fights:
-                    if(self.hero.fight(e)):
+                    if self.hero.fight(e):
                         e.kill()
+                        x = random.randrange(100, 400)
+                        y = random.randrange(100, 400)
+                        en = enemy.Enemy("Boogie", x, y, 'assets/enemy.png')
+                        self.enemies.add(en)
+                        self.all_sprites.add(en)
                         self.background.fill((250, 250, 250))
                     else:
                         self.background.fill((250, 0, 0))
